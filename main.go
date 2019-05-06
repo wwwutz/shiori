@@ -3,12 +3,11 @@
 package main
 
 import (
-	fp "path/filepath"
-
-	"github.com/RadhiFadlillah/shiori/cmd"
-	dt "github.com/RadhiFadlillah/shiori/database"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/sirupsen/logrus"
+	"github.com/wwwutz/shiori/cmd"
+	dt "github.com/wwwutz/shiori/database"
+	fp "path/filepath"
 )
 
 var dataDir = "."

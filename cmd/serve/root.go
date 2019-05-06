@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	dt "github.com/RadhiFadlillah/shiori/database"
 	"github.com/julienschmidt/httprouter"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	dt "github.com/wwwutz/shiori/database"
 )
 
 // NewServeCmd creates new command for serving web page
@@ -23,7 +23,8 @@ func NewServeCmd(db dt.Database, dataDir string) *cobra.Command {
 		Use:   "serve",
 		Short: "Serve web app for managing bookmarks",
 		Long: "Run a simple annd performant web server which serves the site for managing bookmarks." +
-			"If --port flag is not used, it will use port 8080 by default.",
+			"If --port flag is not used, it will use port 8080 by default." +
+			"If --listen <addr> is not used, it will listen on 127.0.0.1 by default.",
 		Run: func(cmd *cobra.Command, args []string) {
 			// Parse flags
 			listenAddress, _ := cmd.Flags().GetString("listen")
@@ -67,13 +68,13 @@ func NewServeCmd(db dt.Database, dataDir string) *cobra.Command {
 			}
 
 			// Serve app
-			logrus.Infoln("Serve shiori in", url)
+			logrus.Infoln("Serve shiori at", url)
 			logrus.Fatalln(svr.ListenAndServe())
 		},
 	}
 
 	// Set flags for root command
-	rootCmd.Flags().StringP("listen", "l", "", "Address the server listens to")
+	rootCmd.Flags().StringP("listen", "l", "127.0.0.1", "Address the server listens to")
 	rootCmd.Flags().IntP("port", "p", 8080, "Port that used by server")
 
 	return rootCmd

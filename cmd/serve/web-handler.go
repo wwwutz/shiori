@@ -7,9 +7,9 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	dt "github.com/RadhiFadlillah/shiori/database"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/dgrijalva/jwt-go/request"
+	dt "github.com/wwwutz/shiori/database"
 )
 
 // webHandler is handler for every API and routes to web page

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"syscall"
 
-	dt "github.com/RadhiFadlillah/shiori/database"
 	"github.com/spf13/cobra"
+	dt "github.com/wwwutz/shiori/database"
 	"golang.org/x/crypto/ssh/terminal"
 )
 
