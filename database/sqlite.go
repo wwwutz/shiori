@@ -465,9 +465,9 @@ func (db *SQLiteDatabase) CreateAccount(username, password string) (err error) {
 	}
 
 	// Insert account to database
-	_, err = db.Exec(`INSERT INTO account
-		(username, password) VALUES (?, ?)`,
-		username, hashedPassword)
+	_, err = db.Exec(`INSERT OR REPLACE INTO account
+		(id, username, password) VALUES ((select id from account where username = ? ), ?, ?)`,
+		username, username, hashedPassword)
 
 	return err
 }
