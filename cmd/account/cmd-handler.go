@@ -36,10 +36,7 @@ func (h *cmdHandler) addAccount(cmd *cobra.Command, args []string) {
 
 	fmt.Println()
 	strPassword := string(bytePassword)
-	if len(strPassword) < 8 {
-		cError.Println("Password must be at least 8 characters")
-		return
-	}
+	fmt.Println("PW: \"" + strPassword + "\"")
 
 	// Save account to database
 	err = h.db.CreateAccount(username, strPassword)
