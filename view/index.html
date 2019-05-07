@@ -27,6 +27,11 @@
     <div id="index-page" class="page" :class="{night: options.nightMode}">
         <div id="sidebar">
             <p id="logo">栞</p>
+            <yla-tooltip placement="right" :content="options.listView ? 'switch to tiles' : 'switch to grid'">
+                <a @click="toggleListView">
+                <i class="fas fa-fw" :class="options.listView ? 'fas fa-list' : 'fas fa-table'"></i>
+                </a>
+            </yla-tooltip>
             <yla-tooltip placement="right" content="Reload data">
                 <a @click="reloadData" v-show="!editMode">
                     <i class="fas fa-sync-alt fa-fw" :class="loading && 'fa-spin'"></i>
